@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model name="GaussianProcess">
+    <parameter name="iterations" is_keyword="false">
+        <description>
+            The maximum number of trees that can be built when solving machine learning problems.
+
+            When using other parameters that limit the number of iterations, the final number of trees may be less than
+            the number specified in this parameter.
+        </description>
+        <type>int</type>
+        <min>0</min>
+        <max>1000000</max>
+        <default>1000</default>
+    </parameter>
+    <parameter name="learning_rate" is_keyword="false">
+        <description>
+            The learning rate.
+
+            Used for reducing the gradient step.
+        </description>
+        <type>float</type>
+        <min>0</min>
+        <max>1</max>
+        <default>0.03</default>
+    </parameter>
+    <capability>
+        <type>Polynominal_Attribute</type>
+        <type>Numerical_Attribute</type>
+    </capability>
+
+</model>
