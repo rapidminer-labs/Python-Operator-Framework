@@ -7,7 +7,14 @@
         </description>
         <type>bool</type>
         <default>true</default>
-
+    </parameter>
+    <parameter name="index_attribute" port="training set" is_keyword="false">
+        <description>Attribute of training example set used as index / timestamp variable.</description>
+        <type>attribute</type>
+    </parameter>
+        <parameter name="forecast_attribute" port="training set" is_keyword="false">
+        <description>Attribute of training example set used as forecast variable.</description>
+        <type>attribute</type>
     </parameter>
     <parameter name="growth" is_keyword="true">
         <description>
