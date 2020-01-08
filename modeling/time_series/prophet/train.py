@@ -19,19 +19,19 @@ def rm_main(params, data):
         weekly_seasonality=params["weekly_seasonality"],
         daily_seasonality=params["daily_seasonality"],
         holidays=None,
-        seasonality_mode='additive',
+        seasonality_mode=params["seasonality_mode"],
         seasonality_prior_scale=params["seasonality_prior_scale"],
         holidays_prior_scale=params["holidays_prior_scale"],
         changepoint_prior_scale=params["changepoint_prior_scale"],
-        mcmc_samples=0,
-        interval_width=0.80,
-        uncertainty_samples=1000
+        mcmc_samples=params["mcmc_samples"],
+        interval_width=params["interval_width"],
+        uncertainty_samples=params["uncertainty_samples"]
 
     )
 
     data = data.rename(
         columns={params["index_attribute"]: "ds",
-                 params["forecast_attribute"]: "y" }
+                 params["forecast_attribute"]: "y"}
     )
 
     clf.fit(data[["ds", "y"]])

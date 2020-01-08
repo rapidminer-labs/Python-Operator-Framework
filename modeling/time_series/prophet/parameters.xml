@@ -12,7 +12,7 @@
         <description>Attribute of training example set used as index / timestamp variable.</description>
         <type>attribute</type>
     </parameter>
-        <parameter name="forecast_attribute" port="training set" is_keyword="false">
+    <parameter name="forecast_attribute" port="training set" is_keyword="false">
         <description>Attribute of training example set used as forecast variable.</description>
         <type>attribute</type>
     </parameter>
@@ -33,6 +33,15 @@
         <min>0</min>
         <max>10000</max>
     </parameter>
+    <parameter name="seasonality_mode" is_keyword="true">
+        <description>
+        </description>
+        <type>string</type>
+        <value>additive</value>
+        <value>multiplicative</value>
+        <default>additive</default>
+    </parameter>
+
     <parameter name="yearly_seasonality" is_keyword="true">
         <description>
         </description>
@@ -93,5 +102,43 @@
         <min>0</min>
         <max>10000</max>
     </parameter>
+    <parameter name="interval_width" is_keyword="false">
+        <description>
+            Width of the uncertainty intervals provided
+            for the forecast. If mcmc_samples=0, this will be only the uncertainty
+            in the trend using the MAP estimate of the extrapolated generative
+            model. If mcmc.samples>0, this will be integrated over all model
+            parameters, which will include uncertainty in seasonality.
+        </description>
+        <type>float</type>
+        <default>0.8</default>
+        <min>0</min>
+        <max>1</max>
+    </parameter>
 
+    <parameter name="uncertainty_samples" is_keyword="false">
+        <description>
+        </description>
+        <description>
+            Number of simulated draws used to estimate uncertainty intervals.
+        </description>
+        <type>int</type>
+        <default>1000</default>
+        <min>0</min>
+        <max>1000000</max>
+    </parameter>
+    <parameter name="mcmc_samples" is_keyword="false">
+        <description>
+        </description>
+        <description>
+            if greater than 0, will do full Bayesian inference
+            with the specified number of MCMC samples. If 0, will do MAP
+            estimation.
+        </description>
+        <type>int</type>
+        <default>0</default>
+        <min>0</min>
+        <max>1000000</max>
+    </parameter>
 </model>
+

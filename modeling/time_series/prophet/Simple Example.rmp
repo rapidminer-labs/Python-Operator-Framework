@@ -54,10 +54,6 @@
           <parameter key="y" value="y2"/>
         </list>
       </operator>
-      <operator activated="true" class="materialize_data" compatibility="9.5.001" expanded="true" height="82" name="Materialize Data" width="90" x="447" y="238">
-        <parameter key="datamanagement" value="double_array"/>
-        <parameter key="data_management" value="auto"/>
-      </operator>
       <operator activated="true" class="generate_attributes" compatibility="9.5.001" expanded="true" height="82" name="Generate Attributes" width="90" x="648" y="85">
         <list key="function_descriptions">
           <parameter key="ds" value="date_add(ds,100,DATE_UNIT_DAY)"/>
@@ -99,18 +95,22 @@
         <parameter key="params XML definition" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#13;&#10;&#13;&#10;&lt;model name=&quot;somename&quot;&gt;&#13;&#10;&lt;!-- this will show up as drop down --&gt;&#13;&#10;&#9;&lt;parameter name=&quot;loss&quot; is_keyword=&quot;true&quot;&gt;&#13;&#10;&#9;&#9;&lt;description&gt;The loss function to be used. Defaults to ‘hinge’, which gives a linear SVM. The ‘log’ loss gives logistic regression, a probabilistic classifier. ‘modified_huber’ is another smooth loss that brings tolerance to outliers as well as probability estimates. ‘squared_hinge’ is like hinge but is quadratically penalized. ‘perceptron’ is the linear loss used by the perceptron algorithm. The other losses are designed for regression but can be useful in classification as well&lt;/description&gt;&#13;&#10;&#9;&#9;&lt;type&gt;string&lt;/type&gt;&#13;&#10;        &lt;value&gt;hinge&lt;/value&gt;&#13;&#10;        &lt;value&gt;log&lt;/value&gt;&#13;&#10;        &lt;value&gt;modified_huber&lt;/value&gt;&#13;&#10;        &lt;value&gt;squared_hinge&lt;/value&gt;&#13;&#10;        &lt;value&gt;perceptron&lt;/value&gt;&#13;&#10;&#9;&#9;&lt;value&gt;squared_loss&lt;/value&gt;&#13;&#10;&#9;&#9;&lt;value&gt;huber&lt;/value&gt;&#13;&#10;&#9;&#9;&lt;value&gt;epsilon_insensitive&lt;/value&gt;&#13;&#10;&#9;&#9;&lt;value&gt;squared_epsilon_insensitive&lt;/value&gt;&#13;&#10;&#9;&#9;&lt;default&gt;hinge&lt;/default&gt;&#13;&#10;&#9;&lt;/parameter&gt;&#13;&#10;&#9;&lt;!-- this will show up as float. The parameters is only visible if parent has values matching the activation_value--&gt;&#13;&#10;&#9;&lt;parameter name=&quot;epsilon&quot; parent=&quot;loss&quot; is_keyword=&quot;true&quot;&gt;&#13;&#10;&#9;&#9;&lt;description&gt;Epsilon in the epsilon-insensitive loss functions.&lt;/description&gt;&#13;&#10;&#9;&#9;&lt;activation_value&gt;huber&lt;/activation_value&gt;&#13;&#10;&#9;&#9;&lt;activation_value&gt;epsilon_insensitive&lt;/activation_value&gt;&#13;&#10;&#9;&#9;&lt;activation_value&gt;squared_epsilon_insensitive&lt;/activation_value&gt;&#13;&#10;&#9;&#9;&lt;type&gt;float&lt;/type&gt;&#13;&#10;&#9;&#9;&lt;min&gt;0&lt;/min&gt;&#13;&#10;&#9;&#9;&lt;max&gt;Double.POSITIVE_INFINITY&lt;/max&gt;&#13;&#10;&#9;&#9;&lt;default&gt;0.01&lt;/default&gt;&#13;&#10;&#9;&lt;/parameter&gt;&#13;&#10;&#9;&lt;!-- this will show up as drop down --&gt;&#13;&#10;&#9;&lt;parameter name=&quot;penalty&quot; is_keyword=&quot;true&quot;&gt;&#13;&#10;&#9;&#9;&lt;description&gt;The penalty to be used.&lt;/description&gt;&#13;&#10;&#9;&#9;&lt;type&gt;string&lt;/type&gt;&#13;&#10;&#9;&#9;&lt;value&gt;none&lt;/value&gt;&#13;&#10;&#9;&#9;&lt;value&gt;l2&lt;/value&gt;&#13;&#10;&#9;&#9;&lt;value&gt;l1&lt;/value&gt;&#13;&#10;&#9;&#9;&lt;value&gt;elasticnet&lt;/value&gt;&#13;&#10;&#9;&#9;&lt;default&gt;l2&lt;/default&gt;&#13;&#10;&#9;&lt;/parameter&gt;&#13;&#10;&#9;&lt;!-- this will show up as numeric input box supporting real numbers--&gt;&#13;&#10;&#9;&lt;parameter name=&quot;alpha&quot; is_keyword=&quot;true&quot;&gt;&#13;&#10;&#9;&#9;&lt;description&gt;Constant that multiplies the regularization term.&lt;/description&gt;&#13;&#10;&#9;&#9;&lt;type&gt;float&lt;/type&gt;&#13;&#10;&#9;&#9;&lt;min&gt;0&lt;/min&gt;&#13;&#10;&#9;&#9;&lt;max&gt;Double.POSITIVE_INFINITY&lt;/max&gt;&#13;&#10;&#9;&#9;&lt;default&gt;0.0001&lt;/default&gt;&#13;&#10;&#9;&lt;/parameter&gt;&#13;&#10;&#9;&lt;!-- this will show up as checkbox--&gt;&#13;&#10;&#9;&lt;parameter name=&quot;fit_intercept&quot; is_keyword=&quot;true&quot;&gt;&#13;&#10;&#9;&#9;&lt;description&gt;Whether the intercept should be estimated or not. If False, the data is assumed to be already centered.&lt;/description&gt;&#13;&#10;&#9;&#9;&lt;type&gt;bool&lt;/type&gt;&#13;&#10;&#9;&#9;&lt;default&gt;True&lt;/default&gt;&#13;&#10;&#9;&lt;/parameter&gt;&#13;&#10;&#9;&lt;!-- this will show up as numeric input box supporting Integers only--&gt;&#13;&#10;&#9;&lt;parameter name=&quot;max_iter&quot; is_keyword=&quot;true&quot;&gt;&#13;&#10;&#9;&#9;&lt;description&gt;The maximum number of passes over the training data (aka epochs).&lt;/description&gt;&#13;&#10;&#9;&#9;&lt;type&gt;int&lt;/type&gt;&#13;&#10;&#9;&#9;&lt;min&gt;1&lt;/min&gt;&#13;&#10;&#9;&#9;&lt;max&gt;Integer.MAX_VALUE&lt;/max&gt;&#13;&#10;&#9;&#9;&lt;default&gt;5&lt;/default&gt;&#13;&#10;&#9;&lt;/parameter&gt;&#13;&#10;    &lt;parameter name=&quot;n_jobs&quot; is_keyword=&quot;true&quot;&gt;&#13;&#10;        &lt;description&gt;Number of CPUs to use to do the One Versus All for multi-class problems.&lt;/description&gt;&#13;&#10;        &lt;type&gt;int&lt;/type&gt;&#13;&#10;        &lt;min&gt;-1&lt;/min&gt;&#13;&#10;        &lt;max&gt;64&lt;/max&gt;&#13;&#10;        &lt;default&gt;-1&lt;/default&gt;&#13;&#10;    &lt;/parameter&gt;&#13;&#10;    &lt;!-- this will only allow positive real numbers --&gt;&#13;&#10;&#9;&lt;parameter name=&quot;eta0&quot; is_keyword=&quot;true&quot;&gt;&#13;&#10;&#9;&#9;&lt;description&gt;Initial learning rate.&lt;/description&gt;&#13;&#10;&#9;&#9;&lt;type&gt;float&lt;/type&gt;&#13;&#10;&#9;&#9;&lt;min&gt;0&lt;/min&gt;&#13;&#10;&#9;&#9;&lt;max&gt;Double.POSITIVE_INFINITY&lt;/max&gt;&#13;&#10;&#9;&#9;&lt;default&gt;0.01&lt;/default&gt;&#13;&#10;&#9;&lt;/parameter&gt;&#13;&#10;&lt;/model&gt;"/>
         <parameter key="learner parameters" value="C:\Users\MartinSchmitz\Work\ExtensionDevelopment\python-operators\modeling\time_series\prophet\parameters.xml"/>
       </operator>
-      <operator activated="true" class="python_operator_framework:process_python_learner" compatibility="0.0.004-SNAPSHOT" expanded="true" height="82" name="Build Python Model" width="90" x="581" y="289">
+      <operator activated="true" class="python_operator_framework:process_python_learner" compatibility="0.0.004-SNAPSHOT" expanded="true" height="82" name="Build Python Model" width="90" x="581" y="238">
         <parameter key="full_output" value="true"/>
         <parameter key="index_attribute" value="ds2"/>
         <parameter key="forecast_attribute" value="y2"/>
         <parameter key="growth" value="linear"/>
         <parameter key="n_changepoints" value="25"/>
+        <parameter key="seasonality_mode" value="additive"/>
         <parameter key="yearly_seasonality" value="auto"/>
         <parameter key="weekly_seasonality" value="auto"/>
-        <parameter key="daily_seasonality" value="False"/>
+        <parameter key="daily_seasonality" value="auto"/>
         <parameter key="seasonality_prior_scale" value="10.0"/>
         <parameter key="changepoint_prior_scale" value="10.0"/>
         <parameter key="holidays_prior_scale" value="10.0"/>
+        <parameter key="interval_width" value="0.8"/>
+        <parameter key="uncertainty_samples" value="1000"/>
+        <parameter key="mcmc_samples" value="0"/>
       </operator>
       <operator activated="true" class="rename" compatibility="9.5.001" expanded="true" height="82" name="Rename (2)" width="90" x="1184" y="85">
         <parameter key="old_name" value="ds"/>
@@ -126,8 +126,7 @@
       <connect from_op="Read CSV" from_port="output" to_op="Set Role" to_port="example set input"/>
       <connect from_op="Set Role" from_port="example set output" to_op="Rename" to_port="example set input"/>
       <connect from_op="Set Role" from_port="original" to_op="Generate Attributes" to_port="example set input"/>
-      <connect from_op="Rename" from_port="example set output" to_op="Materialize Data" to_port="example set input"/>
-      <connect from_op="Materialize Data" from_port="example set output" to_op="Build Python Model" to_port="training set"/>
+      <connect from_op="Rename" from_port="example set output" to_op="Build Python Model" to_port="training set"/>
       <connect from_op="Generate Attributes" from_port="example set output" to_op="Select Attributes" to_port="example set input"/>
       <connect from_op="Generate Attributes" from_port="original" to_op="Join" to_port="right"/>
       <connect from_op="Select Attributes" from_port="example set output" to_op="Join" to_port="left"/>
