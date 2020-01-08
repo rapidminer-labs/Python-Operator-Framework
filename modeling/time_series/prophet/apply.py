@@ -10,9 +10,11 @@ def rm_main(stored_model, data):
         future = future.rename(columns={index_attribute: "ds"})
     except:
         raise Exception(
+            "Cannot find a attribute with name "+stored_model["params"]["index_attribute"]+
+            "in your data set"
             "You need to provide a data set with the "
             "data points you want to forecast for. "
-            "This can be done using a Create Example Set operator.")
+            "You can create a new data set with time stamps using Create ExampleSet operator")
 
     forecast = stored_model['clf'].predict(future)
     metadata = data.rm_metadata  # we loose the metadata in the merge
