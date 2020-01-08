@@ -28,8 +28,7 @@ def rm_main(params, data):
         uncertainty_samples=1000
 
     )
-    print(data)
-    print(data.columns)
+
     data = data.rename(
         columns={params["index_attribute"]: "ds",
                  params["forecast_attribute"]: "y" }

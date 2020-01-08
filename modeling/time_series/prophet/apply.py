@@ -3,6 +3,7 @@ import rm_utilities as rmu
 
 
 def rm_main(stored_model, data):
+    y_name = stored_model["params"]["forecast_attribute"]
     try:
         index_attribute = stored_model["params"]["index_attribute"]
         future = data[[index_attribute]]
@@ -25,9 +26,13 @@ def rm_main(stored_model, data):
 
     # convert everything to proper rapidminer naming and roles.
 
-    pred_name = "prediction(" + stored_model["params"]["forecast_attribute"] + ")"
-    data = data.rename(columns={"yhat": pred_name})
+    pred_name = "prediction(" + y_name + ")"
+    upper_name = "upper_bound(" + y_name + ")"
+    lower_name = "lower_bound(" + y_name + ")"
+    data = data.rename(columns={"yhat": pred_name, "yhat_lower": lower_name, "yhat_upper": upper_name})
+
     data.rm_metadata = metadata
-    rmu.set_role(data, pred_name, "prediction")
-    # TODO names for upper and lower?
+
+    rmu.set_roles(data, role_dict={pred_name: "prediction", upper_name: "upper_bound", lower_name: "lower_bound"})
+
     return data, stored_model
