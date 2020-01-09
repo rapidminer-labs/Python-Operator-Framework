@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model name="xgboost">
+    <parameter name="objective" is_keyword="true">
+        <description>
+            Specify which objective to use. auto will cheese logistic for binominal data, softmax for multinominal and linear for regression.
+        </description>
+        <type>string</type>
+        <value>auto</value>
+        <value>reg:linear</value>
+        <value>reg:squarederror</value>
+        <value>reg:squaredlogerror</value>
+        <value>binary:logistic</value>
+        <value>binary:hinge</value>
+        <value>multi:softprob</value>
+        <value>multi:softmax</value>
+        <value>count:poisson</value>
+        <default>auto</default>
+    </parameter>
+
+    <parameter name="booster" is_keyword="true">
+        <description>
+            Specify which booster to use
+        </description>
+        <type>string</type>
+        <value>gbtree</value>
+        <value>gblinear</value>
+        <value>dart</value>
+        <default>gbtree</default>
+    </parameter>
+
+    <parameter name="max_depth" is_keyword="false">
+        <description>Maximum tree depth for base learners.</description>
+        <type>int</type>
+        <min>3</min>
+        <max>Integer.MAX_VALUE</max>
+        <default>100</default>
+    </parameter>
+    <parameter name="learning_rate" is_keyword="false">
+        <description>Boosting learning rate (xgb's "eta")</description>
+        <type>float</type>
+        <min>0</min>
+        <max>1</max>
+        <default>0.1</default>
+    </parameter>
+    <parameter name="n_estimators" is_keyword="false">
+        <description>Number of trees to fit.</description>
+        <type>int</type>
+        <min>1</min>
+        <max>Integer.MAX_VALUE</max>
+        <default>100</default>
+    </parameter>
+    <parameter name="gamma" is_keyword="false">
+        <description>Minimum loss reduction required to make a further partition on a leaf node of the tree.
+        </description>
+        <type>float</type>
+        <min>0</min>
+        <max>1</max>
+        <default>0</default>
+    </parameter>
+    <parameter name="min_child_weight" is_keyword="false">
+        <description>Minimum sum of instance weight(hessian) needed in a child.</description>
+        <type>int</type>
+        <min>1</min>
+        <max>Integer.MAX_VALUE</max>
+        <default>1</default>
+    </parameter>
+    <parameter name="max_delta_step" is_keyword="false">
+        <description>Maximum delta step we allow each tree's weight estimation to be.</description>
+        <type>int</type>
+        <min>0</min>
+        <max>Integer.MAX_VALUE</max>
+        <default>1</default>
+    </parameter>
+    <parameter name="subsample" is_keyword="false">
+        <description>Subsample ratio of the training instance.
+        </description>
+        <type>float</type>
+        <min>0</min>
+        <max>1</max>
+        <default>1</default>
+    </parameter>
+    <parameter name="reg_alpha" is_keyword="false">
+        <description>L1 regularization term on weights
+        </description>
+        <type>float</type>
+        <min>0</min>
+        <max>1</max>
+        <default>0</default>
+    </parameter>
+    <parameter name="reg_lambda" is_keyword="false">
+        <description>L2 regularization term on weights
+        </description>
+        <type>float</type>
+        <min>0</min>
+        <max>1</max>
+        <default>1</default>
+    </parameter>
+    <parameter name="random_state" is_keyword="false">
+        <description>Random number seed.</description>
+        <type>int</type>
+        <min>0</min>
+        <max>Integer.MAX_VALUE</max>
+        <default>2001</default>
+    </parameter>
+    <!--    <parameter name="importance_type" is_keyword="true">-->
+    <!--        <description>-->
+    <!--            The feature importance type for the feature_importances_ property-->
+    <!--        </description>-->
+    <!--        <type>string</type>-->
+    <!--        <value>gain</value>-->
+    <!--        <value>weight</value>-->
+    <!--        <value>cover</value>-->
+    <!--        <value>total_gain</value>-->
+    <!--        <value>total_cover</value>-->
+    <!--        <default>gain</default>-->
+    <!--    </parameter>-->
+
+
+</model>
