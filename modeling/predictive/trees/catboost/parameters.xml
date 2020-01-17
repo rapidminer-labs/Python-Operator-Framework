@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model name="GaussianProcess">
+    <parameter name="loss_function" is_keyword="false">
+
+        <description>
+            Type of binarization target. Used only in Reggression tasks.
+        </description>
+        <type>string</type>
+        <value>Logloss</value>
+        <value>CrossEntropy</value>
+        <value>RMSE</value>
+        <value>MAE</value>
+        <value>Poisson</value>
+        <value>MAPE</value>
+        <value>MinEntropy</value>
+        <value>Auto</value>
+        <default>Auto</default>
+    </parameter>
     <parameter name="iterations" is_keyword="false">
         <description>
             The maximum number of trees that can be built when solving machine learning problems.
@@ -12,6 +28,19 @@
         <max>1000000</max>
         <default>1000</default>
     </parameter>
+    <parameter name="feature_border_type" is_keyword="false">
+        Type of binarization target. Used only in Reggression tasks.
+        <description>
+        </description>
+        <type>string</type>
+        <value>Median</value>
+        <value>UniformAndQuantiles</value>
+        <value>GreedyLogSum</value>
+        <value>MaxLogSum</value>
+        <value>MinEntropy</value>
+        <default>MinEntropy</default>
+    </parameter>
+
     <parameter name="learning_rate" is_keyword="false">
         <description>
             The learning rate.
@@ -23,9 +52,69 @@
         <max>1</max>
         <default>0.03</default>
     </parameter>
-    <capability>
-        <type>Polynominal_Attribute</type>
-        <type>Numerical_Attribute</type>
-    </capability>
+    <parameter name="depth" is_keyword="false">
+        <description>
+            Depth of a tree. All trees are the same depth.
+        </description>
+        <type>int</type>
+        <min>1</min>
+        <max>1000000</max>
+        <default>6</default>
+    </parameter>
+    <parameter name="l2_leaf_reg" is_keyword="false">
+        <description>
+            L2 regularization term on weights.
+        </description>
+        <type>int</type>
+        <min>1</min>
+        <max>1000000</max>
+        <default>3</default>
+    </parameter>
 
+    <parameter name="subsample_ratio" is_keyword="false">
+        <description>
+            Subsample ratio of columns when constructing each tree. Also known as rsm.
+        </description>
+        <type>float</type>
+        <min>0</min>
+        <max>1</max>
+        <default>1</default>
+    </parameter>
+    <parameter name="border_count" is_keyword="false">
+        <description>
+            The number of partitions for Num features. Used in the preliminary calculation. Also known as number of
+            bins.
+        </description>
+        <type>int</type>
+        <min>1</min>
+        <max>1000000</max>
+        <default>32</default>
+    </parameter>
+    <parameter name="fold_permutation_block_size " is_keyword="false">
+        <description>
+            To accelerate the learning.
+            The recommended value is within [1, 256]. On small samples, must be set to 1.
+        </description>
+        <type>int</type>
+        <min>1</min>
+        <max>1000000</max>
+        <default>1</default>
+    </parameter>
+    <parameter name="leaf_estimation_iterations" is_keyword="false">
+        <description>
+            The number of steps in the gradient when calculating the values in the leaves.
+        </description>
+        <type>int</type>
+        <min>1</min>
+        <max>1000000</max>
+        <default>1</default>
+    </parameter>
+    <parameter name="leaf_estimation_method" is_keyword="false">
+        <description>
+        </description>
+        <type>string</type>
+        <value>Newton</value>
+        <value>Gradient</value>
+        <default>Gradient</default>
+    </parameter>
 </model>

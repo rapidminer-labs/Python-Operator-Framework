@@ -3,11 +3,11 @@ import rm_utilities as rmu
 
 
 def rm_main(stored_model, data):
-    yName = stored_model["y_name"]
-    xNames = stored_model["x_names"]
+    y_name = stored_model["y_name"]
+    x_names = stored_model["x_names"]
     clf = stored_model["clf"]
 
-    regular = data[xNames]
+    regular = data[x_names]
     y_pred = clf.predict(regular)
     if stored_model["isClassification"] is True:
         # convert back to strings
@@ -25,7 +25,7 @@ def rm_main(stored_model, data):
         for name, role in zip(confidence_names, confidence_roles):
             rmu.set_role(data, name, role)
 
-    pred_name = "prediction(" + yName + ")"
+    pred_name = "prediction(" + y_name + ")"
     data[pred_name] = y_pred
 
     rmu.set_role(data, pred_name, "prediction")
